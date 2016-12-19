@@ -12,12 +12,12 @@ import SurveyDetails from './components/Surveys/SurveyDetails';
 import SurveyEditor from './components/Surveys/SurveyEditor';
 import Sync from './components/Sync';
 import reducers from './reducers';
-import mySaga from './sagas';
+import sagas from './sagas';
 
 const sagaMiddleware = saga();
 const store = createStore(reducers, applyMiddleware(createLogger(), sagaMiddleware));
 
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(sagas);
 
 ReactDOM.render(
     <Provider store={store}>

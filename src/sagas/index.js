@@ -11,13 +11,14 @@ import ping from './ping';
 import {fetchAreas, fetchSurveys, fetchSurvey, saveSurvey} from './survey';
 import sync from './sync';
 
-function* mySaga() {
-    yield takeLatest(PING_REQUESTED, ping);
-    yield takeLatest(SYNC_REQUESTED, sync);
-    yield takeLatest(AREAS_FETCH_REQUESTED, fetchAreas);
-    yield takeLatest(SURVEYS_FETCH_REQUESTED, fetchSurveys);
-    yield takeLatest(SURVEY_FETCH_REQUESTED, fetchSurvey);
-    yield takeLatest(SURVEY_SAVE_REQUESTED, saveSurvey)
+export default function* root() {
+    yield [
+        takeLatest(PING_REQUESTED, ping),
+        takeLatest(SYNC_REQUESTED, sync),
+        takeLatest(AREAS_FETCH_REQUESTED, fetchAreas),
+        takeLatest(SURVEYS_FETCH_REQUESTED, fetchSurveys),
+        takeLatest(SURVEY_FETCH_REQUESTED, fetchSurvey),
+        takeLatest(PING_REQUESTED, ping),
+        takeLatest(SURVEY_SAVE_REQUESTED, saveSurvey)
+    ];
 }
-
-export default mySaga;
