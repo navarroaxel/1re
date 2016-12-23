@@ -1,6 +1,6 @@
 import {AREAS_FETCH_SUCCEEDED, SURVEYS_FETCH_SUCCEEDED, SURVEY_FETCH_SUCCEEDED} from '../actions';
 
-export default function sync(state = {}, action) {
+export default function surveys(state = {}, action) {
     switch (action.type) {
         case AREAS_FETCH_SUCCEEDED:
             return Object.assign({}, state, {
