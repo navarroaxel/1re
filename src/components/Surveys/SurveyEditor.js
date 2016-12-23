@@ -5,6 +5,16 @@ import {requestSurvey, saveSurvey} from '../../actions';
 import NavigationButtons from './NavigationButtons';
 
 class SurveyEditor extends Component {
+    static propTypes = {
+        dispatch: PropTypes.func.isREquired,
+        params: PropTypes.shape({
+            survey: PropTypes.string.isRequired
+        }),
+        survey: PropTypes.shape({
+            _id: PropTypes.string.isRequired
+        })
+    };
+
     constructor(props) {
         super(props);
         this.state = {};
@@ -15,16 +25,17 @@ class SurveyEditor extends Component {
     }
 
     navigateTo(component) {
-        if (this.props.survey){
+        if (this.props.survey) {
             this.props.dispatch(saveSurvey(this.props.survey));
         }
         this.setState({component});
     }
 
-    renderContent(Component) {
-        if (Component && this.props.survey) {
-            return <Component survey={this.props.survey}/>;
+    renderContent(Comp) {
+        if (Comp && this.props.survey) {
+            return <Comp survey={this.props.survey}/>;
         }
+        return null;
     }
 
     render() {
@@ -38,7 +49,9 @@ class SurveyEditor extends Component {
                     </div>
                 </div>
                 {this.renderContent(this.state.component)}
-                <NavigationButtons survey={this.props.survey} onChange={component => this.navigateTo(component)}/>
+                <NavigationButtons
+                    survey={this.props.survey} onChange={component => this.navigateTo(component)}
+                />
             </div>
         );
     }

@@ -1,4 +1,5 @@
 import {PING_REQUESTED, PING_SUCCEEDED} from '../actions';
+
 export default function ping(state = {
     isPinging: false
 }, action) {

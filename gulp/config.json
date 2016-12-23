@@ -1,0 +1,19 @@
+{
+  "clean": {
+    "dist": [
+      "dist"
+    ]
+  },
+  "webpack": {
+    "src": "src/index.js",
+    "dest": "dist"
+  },
+  "eslint": {
+    "src": [
+      "gulp/**/*.js",
+      "src/**/*.js",
+      "tasks/**/*.js",
+      "./gulpfile.js"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+  min-height: 50px;
+  background-color: #f8f8f8;
+  border-top: 1px solid $primary-color-dark;
+  .texts {
+    margin-top: 11px;
+    color: $accent-color;
+  }
+}

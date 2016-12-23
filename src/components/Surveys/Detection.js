@@ -9,7 +9,8 @@ import YesNoQuestion from '../questions/YesNoQuestion';
 class Detection extends Component {
     static propTypes = {
         survey: PropTypes.shape({
-            _id: PropTypes.string.isRequired
+            _id: PropTypes.string.isRequired,
+            detection: PropTypes.shape({})
         })
     };
 
@@ -47,11 +48,10 @@ class Detection extends Component {
                 <div className="row">
                     <div className="col-sm-12">
                         Preg 3
-                        <MultiOptionQuestion answer={detection.q3} onChange={a => this.setAnswer('q3', a)}
-                                             options={[
-                                                 {id: 1, name: 'Siempre'},
-                                                 {id: 2, name: 'Nunca'}
-                                             ]}/>
+                        <MultiOptionQuestion
+                            answer={detection.q3} onChange={a => this.setAnswer('q3', a)}
+                            options={[{id: 1, name: 'Siempre'}, {id: 2, name: 'Nunca'}]}
+                        />
                     </div>
                 </div>
             </div>

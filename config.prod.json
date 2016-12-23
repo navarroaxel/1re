@@ -1,0 +1,8 @@
+{
+  "mode": "production",
+  "server": {
+    "port": 2112,
+    "static": ".",
+    "morgan": "combined"
+  }
+}

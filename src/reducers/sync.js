@@ -1,4 +1,5 @@
 import {SYNC_REQUESTED, SYNC_SUCCEEDED} from '../actions';
+
 export default function ping(state = {
     isSyncing: false
 }, action) {

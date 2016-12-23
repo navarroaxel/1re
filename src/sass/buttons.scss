@@ -1,0 +1,31 @@
+.survey-selector .btn {
+  padding: 6px 14px;
+}
+
+.btn-warning {
+  padding: 5px 9px;
+  font-size: 18px;
+  border: 2px solid $indec-cyan;
+  border-radius: 30px;
+  &:hover {
+    color: #fff;
+    background-color: $indec-cyan;
+    border-color: $indec-cyan;
+  }
+}
+
+.btn-info {
+  color: #999;
+  background-color: #f0f0f0;
+  border-color: #cfcfcf;
+}
+
+.btn-default.active {
+  color: $btn-active-text-color;
+  background-color: $btn-active-bg-color;
+  border-color: $btn-active-border-color;
+  &:hover {
+    color: $btn-active-text-color;
+    background-color: $btn-active-hover-bg-color;
+  }
+}

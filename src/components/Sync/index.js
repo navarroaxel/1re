@@ -1,3 +1,4 @@
+/* global navigator */
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {requestPing, requestSync} from '../../actions';
@@ -5,7 +6,7 @@ import {requestPing, requestSync} from '../../actions';
 class Sync extends Component {
     static propTypes = {
         isPinging: PropTypes.bool,
-        poing: PropTypes.object,
+        pong: PropTypes.shape({}),
         dispatch: PropTypes.func.isRequired
     };
 
@@ -19,8 +20,17 @@ class Sync extends Component {
         dispatch(requestSync());
     }
 
+    getPingState() {
+        if (this.props.isPinging) {
+            return 'fa fa-spinner fa-pulse';
+        }
+        if (this.props.pong) {
+            return 'fa fa-check';
+        }
+        return 'fa fa-times';
+    }
+
     render() {
-        const {pong} = this.props;
         return (
             <div className="container">
                 <div className="row">
@@ -32,7 +42,7 @@ class Sync extends Component {
                     <div className="col-sm-12">
                         <h4>
                             Conexión a internet
-                            <span className={`glyphicon ${pong ? 'glyphicon-ok' : 'glyphicon-remove'}`}/>
+                            <span className={`fa ${navigator.onLine ? 'fa-check' : 'fa-times'}`}/>
                         </h4>
                     </div>
                 </div>
@@ -40,7 +50,7 @@ class Sync extends Component {
                     <div className="col-sm-12">
                         <h4>
                             Servidor online
-                            <span className={`glyphicon ${pong ? 'glyphicon-ok' : 'glyphicon-remove'}`}/>
+                            <span className={this.getPingState()}/>
                         </h4>
                     </div>
                 </div>

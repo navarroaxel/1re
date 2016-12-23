@@ -7,8 +7,17 @@ import Visits from './Visits';
 class SurveyDetails extends Component {
     static propTypes = {
         dispatch: PropTypes.func.isRequired,
+        params: PropTypes.shape({
+            survey: PropTypes.string.isRequired
+        }),
         survey: PropTypes.shape({
-            _id: React.PropTypes.string
+            _id: PropTypes.string.isRequired,
+            visits: PropTypes.arrayOf(
+                PropTypes.shape({
+                    order: PropTypes.number.isRequired,
+                    date: PropTypes.instanceOf(Date).isRequired
+                })
+            )
         })
     };
 
@@ -26,7 +35,8 @@ class SurveyDetails extends Component {
                 </div>
                 <div className="row">
                     <div className="col-sm-12 text-right">
-                        {this.props.survey && <NewVisit dispatch={this.props.dispatch} survey={this.props.survey}/>}
+                        {this.props.survey
+                        && <NewVisit dispatch={this.props.dispatch} survey={this.props.survey}/>}
                     </div>
                 </div>
                 {this.props.survey && <Visits visits={this.props.survey.visits || []}/>}

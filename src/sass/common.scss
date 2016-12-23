@@ -1,0 +1,46 @@
+@import "bootstrap/app";
+@import "font-awesome-overrides";
+@import "~components-font-awesome/scss/font-awesome";
+@import "palette";
+
+$indec-green: #37b54a;
+$index-red: #d9534f;
+$indec-blue: #353192;
+$indec-cyan: #0290ce;
+$indec-magenta: #e00075;
+$indec-gray: #57575a;
+$white: #fff;
+$red: #e53935;
+
+//another type of blue =S
+$indec-society: #013d7c;
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Oswald Regular"), local("Oswald-Regular"), url("../fonts/oswald-regular.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+small {
+  font-size: 95%;
+}
+
+h2 {
+  color: $accent-color;
+}
+
+.bg-app {
+  min-height: 350px;
+  padding-top: 15px;
+  margin-top: 10px;
+  background-color: #f5f5f5;
+  .sign-in {
+    margin-top: 50px;
+  }
+}

@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/label-has-for:"off" */
 import React, {Component, PropTypes} from 'react';
 
 export default class MultiOptionQuestion extends Component {
@@ -32,8 +33,9 @@ export default class MultiOptionQuestion extends Component {
                     <div key={option.id} className="row">
                         <div className="col-sm-6">
                             <label>
-                                <input type="checkbox" checked={!!answer[index]}
-                                       onChange={() => this.onChange(index)}/> {option.name}
+                                <input
+                                    type="checkbox" checked={!!answer[index]} onChange={() => this.onChange(index)}
+                                /> {option.name}
                             </label>
                         </div>
                     </div>

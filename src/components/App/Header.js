@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Link} from 'react-router';
 
-export default () => (
+const Header = () => (
     <header>
         <nav className="navbar navbar-default">
             <ul className="nav navbar-nav">
@@ -16,3 +16,5 @@ export default () => (
         </nav>
     </header>
 );
+
+export default Header;

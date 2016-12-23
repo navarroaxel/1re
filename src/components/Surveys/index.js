@@ -23,24 +23,24 @@ class Surveys extends Component {
                 <div className="col-sm-12">
                     <table className="table table-responsive table-stripped">
                         <thead>
-                        <tr>
-                            <th>Area</th>
-                            <th>Departamento</th>
-                            <th/>
-                        </tr>
+                            <tr>
+                                <th>Area</th>
+                                <th>Departamento</th>
+                                <th/>
+                            </tr>
                         </thead>
                         <tbody>
-                        {this.props.areas.map(area =>
-                            <tr key={area.id}>
-                                <td>{area.id}</td>
-                                <td>{area.department}</td>
-                                <td>
-                                    <Link to={`/surveys/${area.id}`}>
-                                        <span className="glyphicon glyphicon-log-out"/>
-                                    </Link>
-                                </td>
-                            </tr>
-                        )}
+                            {this.props.areas.map(area =>
+                                <tr key={area.id}>
+                                    <td>{area.id}</td>
+                                    <td>{area.department}</td>
+                                    <td>
+                                        <Link to={`/surveys/${area.id}`}>
+                                            <span className="fa fa-sign-out"/>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

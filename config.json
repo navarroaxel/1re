@@ -1,0 +1,9 @@
+{
+  "mode": "development",
+  "cache": false,
+  "server": {
+    "port": 2112,
+    "static": "public",
+    "morgan": "dev"
+  }
+}

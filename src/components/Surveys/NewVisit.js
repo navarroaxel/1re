@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {hashHistory} from 'react-router';
-import {saveSurvey} from '../../actions'
+import {saveSurvey} from '../../actions';
 
 export default class NewVisit extends Component {
     static propTypes = {
@@ -11,9 +11,9 @@ export default class NewVisit extends Component {
     };
 
     onClick() {
-        const {survey}=this.props;
+        const {survey} = this.props;
         if (!survey.visits) {
-            survey.visits = []
+            survey.visits = [];
         }
         survey.visits.push({
             order: survey.visits.length,

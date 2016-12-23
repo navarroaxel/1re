@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import Detection from './Detection';
-import HouseholdMembers from './HouseholdMembers'
+import HouseholdMembers from './HouseholdMembers';
 
 export default class NavigationButtons extends Component {
     static propTypes = {
@@ -23,7 +23,7 @@ export default class NavigationButtons extends Component {
 
     goToNode(index) {
         this.props.onChange(NavigationButtons.nodes[index]);
-        this.setState(prevState => ({index}));
+        this.setState({index});
     }
 
     render() {
@@ -36,8 +36,8 @@ export default class NavigationButtons extends Component {
                     </button>}
                 </div>
                 <div className="col-sm-4 text-right">
-                    {index < NavigationButtons.nodes.length - 1 && <button
-                        onClick={() => this.goToNode(index + 1)} className="btn btn-primary">
+                    {index < NavigationButtons.nodes.length - 1
+                    && <button onClick={() => this.goToNode(index + 1)} className="btn btn-primary">
                         Siguiente
                     </button>}
                 </div>

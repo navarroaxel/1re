@@ -1,5 +1,4 @@
-import 'whatwg-fetch';
-
+/* global btoa fetch */
 export default class Http {
     static get(url) {
         return fetch(`https://ghobo.indec.gov.ar/mobile/${url}`).then(
@@ -11,7 +10,7 @@ export default class Http {
         return fetch(`https://ghobo.indec.gov.ar/mobile/${url}`, {
             method: 'post',
             headers: {
-                'Authorization': 'Basic ' + btoa('demo:ijH4TyJiQQram9jBbO+Tnbe3zltvrVbzSWljuZLOmf0='),
+                Authorization: `Basic ${btoa('demo:ijH4TyJiQQram9jBbO+Tnbe3zltvrVbzSWljuZLOmf0=')}`
             },
             body: JSON.stringify(body)
         }).then(

@@ -1,4 +1,4 @@
-import {forEach, map, filter, uniqBy} from 'lodash';
+import {map, filter, uniqBy, parseInt} from 'lodash';
 import StorageService from './storage';
 
 export default class SurveyService {
@@ -11,10 +11,11 @@ export default class SurveyService {
     }
 
     static fetchByArea(area) {
+        const id = parseInt(area);
         return SurveyService.fetch().then(
             surveys => filter(
                 surveys,
-                survey => survey.address.area == area
+                survey => survey.address.area === id
             )
         );
     }
@@ -37,18 +38,24 @@ export default class SurveyService {
     }
 
     static save(survey) {
-        survey.updated = new Date();
-        survey.synced = false;
-        return StorageService.saveOne(StorageService.getSurveys(), survey);
+        return StorageService.saveOne(
+            StorageService.getSurveys(),
+            Object.assign({}, survey, {
+                updated: new Date(),
+                synced: false
+            })
+        );
     }
 
     static saveAll(surveys) {
-        forEach(surveys,
-            survey => {
-                survey.updated = new Date();
-                survey.synced = true;
-            }
+        return StorageService.save(
+            StorageService.getSurveys(),
+            map(surveys,
+                survey => Object.assign({}, survey, {
+                    updated: new Date(),
+                    synced: false
+                })
+            )
         );
-        return StorageService.save(StorageService.getSurveys(), surveys);
     }
 }

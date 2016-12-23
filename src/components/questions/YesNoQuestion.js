@@ -1,3 +1,4 @@
+/* eslint jsx-a11y/label-has-for:"off" */
 import React, {Component, PropTypes} from 'react';
 
 export default class YesNoQuestion extends Component {
@@ -20,15 +21,16 @@ export default class YesNoQuestion extends Component {
             <div className="row">
                 <div className="col-sm-6">
                     <label>
-                        <input type="radio" checked={this.props.answer == 1}
-                               onChange={e => this.onChange(1)}/> Si
+                        <input
+                            type="radio" checked={this.props.answer === 1} onChange={() => this.onChange(1)}
+                        /> Si
                     </label>
-
                 </div>
                 <div className="col-sm-6">
                     <label>
-                        <input type="radio" checked={this.props.answer == 2}
-                               onChange={e => this.onChange(2)}/> No
+                        <input
+                            type="radio" checked={this.props.answer === 2} onChange={() => this.onChange(2)}
+                        /> No
                     </label>
                 </div>
             </div>

@@ -1,0 +1,308 @@
+@import "common";
+@import "chat";
+@import "header";
+@import "footer";
+@import "sign-in";
+@import "buttons";
+@import "form";
+@import "list-group";
+
+html, body {
+  overflow-y: auto;
+}
+
+.btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+  outline: none;
+}
+
+main {
+  padding-top: 128px;
+  margin-bottom: 60px;
+}
+
+.semaphore {
+  max-width: 110px;
+  min-height: 22px;
+  padding: 6px 8px 4px;
+  margin-top: 10px;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 11px;
+}
+
+// end footer
+
+.margin-top-comments {
+  margin-top: 7px;
+}
+
+select.max {
+  max-width: 300px;
+  padding: 6px 2px;
+}
+
+.remove-destination {
+  padding: 0 30px;
+  .fa-trash {
+    color: $index-red;
+  }
+}
+
+hr {
+  margin: 5px 0;
+}
+
+// menu
+.header-logo {
+  background-color: #f8f8f8;
+}
+
+a {
+  color: $accent-color;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.nav-tabs > li > a {
+  color: $white;
+  border-radius: 0;
+}
+
+// fin menu
+
+// index survey
+.stage-selector {
+  margin-top: 30px;
+}
+
+.btn-survey-a {
+  width: 86px;
+  height: 86px;
+  padding: 8px 0;
+  margin-top: 0;
+  font-size: 50px;
+  border: 1px solid transparent;
+}
+
+.btn-survey-a-text {
+  width: 212px;
+  height: 86px;
+  padding: 20px 0;
+  margin-top: 0;
+  font-size: 30px;
+  color: #fff;
+  border: 1px solid transparent;
+  &.eze {
+    height: 43px;
+    padding: 0;
+    margin: 0 auto;
+    background-color: #004e76;
+  }
+}
+
+.btn-form {
+  @include button-variant($accent-color, #ccc, #fff);
+}
+
+.stage {
+  padding-right: 0;
+  padding-left: 0;
+  button {
+    display: inline-block;
+    width: 69px;
+    height: 39px;
+    padding: 5px 0;
+    margin: 4px 0 0;
+    font-size: 20px;
+  }
+}
+
+// end index survey
+
+// fonts
+.module-title, .survey-title {
+  margin-bottom: 30px;
+  color: $accent-color;
+}
+
+.version {
+  margin-top: -3px;
+  font-size: 10px;
+}
+
+// end fonts
+
+// boxes
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.panel-body {
+  background-color: #fdfcfc;
+  [class*="col-xs"] {
+    padding-right: 1px;
+    padding-left: 1px;
+  }
+}
+
+.panel-primary {
+  border-color: #ddd;
+  > .panel-heading {
+    color: #fff;
+    background-color: $accent-color;
+    border-color: #ddd;
+  }
+}
+
+// end boxes
+
+.panel-default {
+  border-color: #ddd;
+  > .panel-heading {
+    color: #333;
+    background-color: #f0f0f0;
+    border-color: #ddd;
+  }
+}
+
+// status pie & fa icons
+.sidebar-success {
+  padding: 0 5px 5px;
+  color: #454545;
+}
+
+.sidebar-incomplete {
+  padding: 0 5px 5px;
+  color: #454545;
+}
+
+.fa-check-circle, .fa-check {
+  color: $indec-green;
+}
+
+.fa-chevron-down, .fa-chevron-right {
+  color: $accent-color;
+}
+
+.fa-exclamation-circle, .fa-times {
+  color: $index-red;
+}
+
+// END status pie
+
+label {
+  display: inline;
+  font-weight: normal;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.row-divider:not(:last-child) {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+// Solution scroll horizontal
+@media (min-width: 768px) {
+  .container {
+    width: inherit;
+  }
+
+  .navbar-right {
+    margin: 0 0 0 25px;
+  }
+}
+
+.fadein, .fadeout {
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+}
+
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active {
+  display: block !important;
+  opacity: 0;
+}
+
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active {
+  display: block !important;
+  opacity: 1;
+}
+
+.fa-thumbs-up {
+  font-size: 60px;
+  color: $indec-cyan;
+}
+
+.rating-question label {
+  padding: 6px 20px;
+}
+
+.alert.alert-warning {
+  padding: 5px;
+  margin-bottom: 0;
+  border-radius: 0;
+  &.input-top {
+    margin-top: 5px;
+  }
+}
+
+.unread {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 12px;
+  color: #fff;
+  text-align: center;
+  background-color: $index-red;
+  border-radius: 30px;
+}
+
+.question {
+  label {
+    display: block;
+    padding-bottom: 5px;
+    &.inline {
+      display: inline;
+    }
+  }
+  &.form-group, &.form-group-lg {
+    position: relative;
+    padding: 15px;
+    margin: 0 0 10px -5px;
+    border: 1px solid #ddd;
+  }
+}
+
+.option-btn {
+  margin: 5px;
+}
+
+.box-new {
+  padding-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+
+.no-padding {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.btn-link {
+  color: $accent-color;
+}
