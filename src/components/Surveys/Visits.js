@@ -35,7 +35,7 @@ Visits.propTypes = {
         PropTypes.shape({
             order: PropTypes.number.isRequired
         })
-    )
+    ).isRequired
 };
 
 export default Visits;

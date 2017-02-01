@@ -2,7 +2,8 @@ const path = require('path'),
     webpack = require('webpack'),
     CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
-    LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+    LodashModuleReplacementPlugin = require('lodash-webpack-plugin'),
+    FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
     devtool: 'cheap-module-source-map',
@@ -11,31 +12,32 @@ module.exports = {
         './src'
     ],
     resolve: {
-        modulesDirectories: ['node_modules'],
-        extensions: ['', '.js', '.jsx', '.scss'],
+        modules: ['node_modules'],
+        extensions: ['.js', '.jsx', '.scss'],
         alias: {
             'react-native': 'react-native-web'
         }
     },
     output: {
         path: path.join(__dirname, 'public'),
-        publicPath: '/assets',
+        publicPath: '/',
         filename: 'bundle.js'
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'react-hot-loader!babel-loader?cacheDirectory=.babel-cache'
-        }, {
-            test: /\.json$/,
-            loader: 'json-loader'
+            use: [{
+                loader: 'react-hot-loader'
+            }, {
+                loader: 'babel-loader', options: {cacheDirectory: '.babel-cache'}
+            }]
         }, {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader?outputStyle=expanded'])
         }, {
             test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            use: ['style-loader', 'css-loader']
         }, {
             exclude: [
                 /\.html$/,
@@ -43,10 +45,12 @@ module.exports = {
                 /\.s?css$/,
                 /\.json$/
             ],
-            loader: 'url-loader?name=[name].[ext]&limit=10000'
+            loader: 'url-loader',
+            options: {name: '[name].[ext]', limit: 10000}
         }, {
             test: /\.(jpg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: 'file-loader?name=[name].[ext]'
+            loader: 'file-loader',
+            options: {name: '[name].[ext]'}
         }]
     },
     plugins: [
@@ -55,9 +59,9 @@ module.exports = {
             NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }),
         new LodashModuleReplacementPlugin,
-        new webpack.optimize.OccurrenceOrderPlugin,
         new webpack.HotModuleReplacementPlugin(),
         new CaseSensitivePathsPlugin(),
+        new FriendlyErrorsWebpackPlugin(),
         new ExtractTextPlugin('bundle.css')
     ],
     node: {

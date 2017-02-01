@@ -7,7 +7,7 @@ export default class NewVisit extends Component {
         dispatch: PropTypes.func.isRequired,
         survey: PropTypes.shape({
             _id: PropTypes.string.isRequired
-        })
+        }).isRequired
     };
 
     onClick() {

@@ -1,5 +1,6 @@
 const path = require('path'),
     webpack = require('webpack'),
+    CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -12,8 +13,8 @@ module.exports = {
         './src'
     ],
     resolve: {
-        modulesDirectories: ['node_modules'],
-        extensions: ['', '.js', '.jsx', '.scss'],
+        modules: ['node_modules'],
+        extensions: ['.js', '.jsx', '.scss'],
         alias: {
             'react-native': 'react-native-web'
         }
@@ -21,22 +22,19 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'public'),
         publicPath: '/',
-        filename: 'assets/bundle.js'
+        filename: 'bundle.js'
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
             loader: 'babel-loader'
         }, {
-            test: /\.json$/,
-            loader: 'json-loader'
-        }, {
-            test: /\.scss$/,
+            test: /\.s?css$/,
             loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader?outputStyle=expanded'])
         }, {
             test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            use: ['style-loader', 'css-loader']
         }, {
             exclude: [
                 /\.html$/,
@@ -44,10 +42,12 @@ module.exports = {
                 /\.s?css$/,
                 /\.json$/
             ],
-            loader: 'url-loader?name=[name].[ext]&limit=10000'
+            loader: 'url-loader',
+            options: {name: '[name].[ext]', limit: 10000}
         }, {
             test: /\.(jpg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: 'file-loader?name=[name].[ext]'
+            loader: 'file-loader',
+            options: {name: '[name].[ext]'}
         }]
     },
     plugins: [
@@ -56,12 +56,11 @@ module.exports = {
             NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }),
         new HtmlWebpackPlugin({
-            inject: true,
             template: 'public/index.html',
         }),
         new LodashModuleReplacementPlugin,
-        new webpack.optimize.OccurrenceOrderPlugin,
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
         new CaseSensitivePathsPlugin(),
         new ExtractTextPlugin('bundle.css')
     ],

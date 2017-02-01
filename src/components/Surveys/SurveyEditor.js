@@ -6,13 +6,14 @@ import NavigationButtons from './NavigationButtons';
 
 class SurveyEditor extends Component {
     static propTypes = {
-        dispatch: PropTypes.func.isREquired,
+        requestSurvey: PropTypes.func.isRequired,
+        saveSurvey: PropTypes.func.isRequired,
         params: PropTypes.shape({
             survey: PropTypes.string.isRequired
-        }),
+        }).isRequired,
         survey: PropTypes.shape({
             _id: PropTypes.string.isRequired
-        })
+        }).isRequired
     };
 
     constructor(props) {
@@ -21,12 +22,12 @@ class SurveyEditor extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(requestSurvey(this.props.params.survey));
+        this.props.requestSurvey(this.props.params.survey);
     }
 
     navigateTo(component) {
         if (this.props.survey) {
-            this.props.dispatch(saveSurvey(this.props.survey));
+            this.props.saveSurvey(this.props.survey);
         }
         this.setState({component});
     }
@@ -58,5 +59,9 @@ class SurveyEditor extends Component {
 }
 
 export default connect(
-    state => ({survey: state.surveys.survey})
+    state => ({survey: state.surveys.survey}),
+    dispatch => ({
+        requestSurvey: id => dispatch(requestSurvey(id)),
+        saveSurvey: survey => dispatch(saveSurvey(survey))
+    })
 )(SurveyEditor);

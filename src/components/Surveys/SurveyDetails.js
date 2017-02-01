@@ -9,7 +9,7 @@ class SurveyDetails extends Component {
         dispatch: PropTypes.func.isRequired,
         params: PropTypes.shape({
             survey: PropTypes.string.isRequired
-        }),
+        }).isRequired,
         survey: PropTypes.shape({
             _id: PropTypes.string.isRequired,
             visits: PropTypes.arrayOf(
@@ -19,6 +19,10 @@ class SurveyDetails extends Component {
                 })
             )
         })
+    };
+
+    static defaultProps = {
+        survey: null
     };
 
     componentDidMount() {

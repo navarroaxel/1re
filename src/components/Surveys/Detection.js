@@ -11,7 +11,7 @@ class Detection extends Component {
         survey: PropTypes.shape({
             _id: PropTypes.string.isRequired,
             detection: PropTypes.shape({})
-        })
+        }).isRequired
     };
 
     constructor(props) {
@@ -26,7 +26,6 @@ class Detection extends Component {
         const {survey} = this.props;
         survey.detection[field] = value;
         this.setState({survey});
-        // this.props.dispatch(receiveSurvey({survey}));
     }
 
     render() {

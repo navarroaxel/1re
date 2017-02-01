@@ -7,6 +7,10 @@ export default class YesNoQuestion extends Component {
         onChange: PropTypes.func.isRequired
     };
 
+    static defaultProps = {
+        answer: null
+    };
+
     constructor(props) {
         super(props);
         this.state = {};

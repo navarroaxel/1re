@@ -5,7 +5,7 @@ import {requestAreas} from '../../actions';
 
 class Surveys extends Component {
     static propTypes = {
-        dispatch: PropTypes.func.isRequired,
+        requestAreas: PropTypes.func.isRequired,
         areas: PropTypes.arrayOf(
             PropTypes.shape({
                 id: React.PropTypes.number
@@ -13,8 +13,12 @@ class Surveys extends Component {
         )
     };
 
+    static defaultProps = {
+        areas: []
+    };
+
     componentDidMount() {
-        this.props.dispatch(requestAreas());
+        this.props.requestAreas();
     }
 
     renderContent() {
@@ -63,5 +67,8 @@ class Surveys extends Component {
 }
 
 export default connect(
-    state => ({areas: state.surveys.areas})
+    state => ({areas: state.surveys.areas}),
+    dispatch => ({
+        requestAreas: () => dispatch(requestAreas())
+    })
 )(Surveys);

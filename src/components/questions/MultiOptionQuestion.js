@@ -11,7 +11,7 @@ export default class MultiOptionQuestion extends Component {
                 id: PropTypes.number.isRequired,
                 name: PropTypes.string.isRequired
             })
-        ),
+        ).isRequired,
         onChange: PropTypes.func.isRequired
     };
 

@@ -5,8 +5,8 @@ import {requestPing, requestSync} from '../../actions';
 
 class Sync extends Component {
     static propTypes = {
-        isPinging: PropTypes.bool,
-        pong: PropTypes.shape({}),
+        isPinging: PropTypes.bool.isRequired,
+        pong: PropTypes.shape({}).isRequired,
         dispatch: PropTypes.func.isRequired
     };
 

@@ -5,10 +5,10 @@ import {requestSurveys} from '../../actions';
 
 class Area extends Component {
     static propTypes = {
-        dispatch: PropTypes.func.isRequired,
+        requestSurveys: PropTypes.func.isRequired,
         params: PropTypes.shape({
             area: PropTypes.string.isRequired
-        }),
+        }).isRequired,
         surveys: PropTypes.arrayOf(
             PropTypes.shape({
                 _id: React.PropTypes.string
@@ -16,8 +16,12 @@ class Area extends Component {
         )
     };
 
+    static defaultProps = {
+        surveys: []
+    };
+
     componentDidMount() {
-        this.props.dispatch(requestSurveys(this.props.params.area));
+        this.props.requestSurveys(this.props.params.area);
     }
 
     renderContent() {
@@ -71,5 +75,8 @@ class Area extends Component {
 }
 
 export default connect(
-    state => ({surveys: state.surveys.surveys})
+    state => ({surveys: state.surveys.surveys}),
+    dispatch => ({
+        requestSurveys: area => dispatch(requestSurveys(area))
+    })
 )(Area);
